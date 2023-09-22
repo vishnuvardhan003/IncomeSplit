@@ -1,0 +1,221 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+	<%@ page import="java.sql.*" %>
+		<!DOCTYPE html>
+		<html>
+
+		<head>
+			<meta charset="ISO-8859-1">
+			<title>Insert title here</title>
+			<style>
+				body {
+					background: #858585;
+					justify-content: center;
+					padding: 50px 50px;
+					text-align: center;
+				}
+
+				select {
+					height: 30px;
+					width: 125px;
+					border-radius: 5px;
+					font-size: 18px;
+					
+
+				}
+
+				h1 {
+					font-size: 100px;
+					height: 70px;
+				}
+
+				h2 {
+					font-size: 30px;
+					height: 40px;
+				}
+
+				h3 {
+					font-size: 23px;
+				}
+
+				input {
+					height: 25px;
+					width: 125px;
+					font-size: 18px;
+					border-radius: 5px;
+				}
+
+				input[type=number] {
+					height: 25px;
+					width: 190px;
+				}
+			</style>
+		</head>
+
+		<body>
+
+			<% Class.forName("com.mysql.jdbc.Driver"); Connection
+				con=DriverManager.getConnection( "jdbc:mysql://localhost:3306/srm?characterEncoding=latin1" , "root"
+				, "password" ); %>
+				<h1>Welcome</h1>
+				<form name="myform" action="#" method="post">
+
+					<select name="save">
+						<option>Saving</option>
+						<option value="0.5">50%</option>
+						<option value="0.3">30%</option>
+						<option value="0.2">20%</option>
+					</select>
+
+					<select name="need">
+						<option>Needs</option>
+						<option value="0.5">50%</option>
+						<option value="0.3">30%</option>
+						<option value="0.2">20%</option>
+					</select>
+
+					<select name="exp">
+						<option>Expenditure</option>
+						<option value="0.5">50%</option>
+						<option value="0.3">30%</option>
+						<option value="0.2">20%</option>
+					</select>
+
+
+
+					<h3>Enter Your Wallet Money:</h3><input type='number' placeholder="Enter Your money" name="money"
+						id="money"><br><br>
+
+					<input type="submit" value="submit" onclick="show()">
+
+				</form>
+
+
+
+
+
+
+
+				<% try{ String g=request.getParameter("money"); String d=(String)session.getAttribute("xyz");
+					Class.forName("com.mysql.jdbc.Driver"); Connection
+					ct=DriverManager.getConnection("jdbc:mysql://localhost:3306/srm?characterEncoding=latin1","root","password");
+					Statement stmt=ct.createStatement(); String res=String.format("insert into main
+					values('%s','%s')",d,g); stmt.executeUpdate(res); ct.close(); } catch(Exception e){
+					System.out.println(e); } %>
+
+
+
+					<script>
+						function show() {
+							var a1 = myform.save.value;
+							var a2 = myform.need.value;
+							var a3 = myform.exp.value;
+							//alert("all % values must not be same")
+							//alert(parseFloat(a1)+parseFloat(a2)+parseFloat(a3));
+							var a = document.getElementById("money").value;
+							document.write("Your selection is " + a1 * 100 + "% savings," + a2 * 100 + "% needs, " + a3 * 100 + "% expenditure");
+							document.write("<br>");
+							if (parseFloat(a1) + parseFloat(a2) + parseFloat(a3) > 1) {
+								alert("all % values should be equal to 100%")
+								window.open('http://localhost:8080/NVV/main.jsp', '_self');
+							}
+							else {
+								if (a1 == "0.5") {
+									document.write("Your Savings is 50% : ");
+									var b = a * 0.5;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+
+								}
+								else if (a1 == "0.3") {
+									document.write("Your Savings is 30% : ");
+									var b = a * 0.3;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+
+								}
+								else if (a1 == "0.2") {
+									document.write("Your Savings is 20% : ");
+									var b = a * 0.2;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+								}
+								else {
+									document.write("save money");
+								}
+
+								if (a2 == "0.5") {
+									document.write("Your Needs is 50% : ");
+									var b = a * 0.5;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+
+
+								}
+								else if (a2 == "0.3") {
+									document.write("Your Needs is 30% : ");
+									var b = a * 0.3;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+
+								}
+								else if (a2 == "0.2") {
+									document.write("Your Needs is 20% : ");
+									var b = a * 0.2;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+								}
+								else {
+									document.write("save money");
+								}
+
+								if (a3 == "0.5") {
+									document.write("Your expenditure is 50% : ");
+									var b = a * 0.5;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+
+
+								}
+								else if (a3 == "0.3") {
+									document.write("Your expenditure is 30% : ");
+									var b = a * 0.3;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+
+								}
+								else if (a3 == "0.2") {
+									document.write("Your expenditure is 20% : ");
+									var b = a * 0.2;
+									document.write(b);
+									document.write("RS")
+									document.write("<br>")
+								}
+								else {
+									document.write("save money");
+								}
+
+							}
+
+
+							document.write("successfully divided")
+						}
+
+					</script>
+
+
+
+
+
+
+
+		</body>
+
+		</html>

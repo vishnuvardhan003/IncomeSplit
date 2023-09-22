@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRATION</title>
+    <link rel="stylesheet" type="text/css" href="registration.css">
+</head>
+
+<body>
+    <script>
+        function valid() {
+            var a = document.getElementById("fname").value;
+            var b = document.getElementById("lname").value;
+            var a1 = myform.gender.value;
+            var c = document.getElementById("age").value;
+            var d = document.getElementById("phone").value;
+            var t = document.getElementById("college").value;
+            var e = document.getElementById("username").value;
+            var f = document.getElementById("new_password").value;
+            var g = document.getElementById("confirm_password").value;
+            if (a != "") {
+                if (a.match(/^[ a-zA-Z\-\’]+$/)&&!a.match(/\s/)) {
+                    if (b != "") {
+                        if (!b.match(/[0-9]/g) && !b.match(/\W/g)) {
+                            if (a1.length != 0) {
+                                if (c != "") {
+                                    var ToDate = new Date();
+                                    if( new Date(c).getTime() <= ToDate.getTime()){
+                                        if (d != "") {
+                                            if (d.length == 10 && (d[0] == '9' || d[0] == '8' || d[0] == '7' || d[0] == '6') && d != "" && !d.match(/\W/) && !d.match(/\s/)) {
+                                                if (t != "") {
+                                                    if (!t.match(/[0-9]/g) && !t.match(/\W/g)) {
+                                                        if (e != "") {
+         /*w=a-z,A-Z,0-9,_     W=remaining*/                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e)) {
+                                                                if (f != "") {
+                                                                    if (f.length >= 8) {
+                                                                        if (f.match(/\w/) && f.match(/\W/)) {
+                                                                            if (g != "") {
+                                                                                if (g.length >= 8) {
+                                                                                    if (f == g) {
+                                                                                    alert("VALID RESPONSE");
+                                                                                    }
+                                                                                    else {
+                                                                                    alert("Password and confirm password must be same");
+                                                                                    event.preventDefault();
+                                                                                    }
+                                                                                }
+                                                                                else{
+                                                                                    alert("Password and confirm password must be same");
+                                                                                    event.preventDefault();
+                                                                                }
+                                                                            }
+                                                                            else{
+                                                                                alert("Password and confirm password must be same");
+                                                                                event.preventDefault();
+                                                                            }
+                                                                        }
+                                                                        else{
+                                                                            alert("Invalid Password");
+                                                                            event.preventDefault();
+                                                                        }
+                                                                    }
+                                                                    else{
+                                                                        alert("Password must contain atleast 8 characters");
+                                                                        event.preventDefault();
+                                                                    }
+                                                                }
+                                                                else{
+                                                                    alert("Password must not be null");
+                                                                    event.preventDefault();
+                                                                }
+                                                            }
+                                                            else{
+                                                                alert("Enter valid Email ID");
+                                                                event.preventDefault();
+                                                            }
+                                                        }
+                                                        else{
+                                                            alert("Email ID must not be null");
+                                                            event.preventDefault();
+                                                        }
+                                                    }
+                                                    else{
+                                                        alert("Enter valid college name");
+                                                        event.preventDefault();
+                                                    }
+                                                }
+                                                else{
+                                                    alert("College name must not be null");
+                                                    event.preventDefault();
+                                                }
+                                            }
+                                            else{
+                                                alert("Enter valid phone number");
+                                                event.preventDefault();
+                                            }
+                                        }
+                                        else{
+                                            alert("Phone number should not be null");
+                                            event.preventDefault();
+                                        }
+                                    }
+                                    else{
+                                        alert("Enter valid Date Of Birth");
+                                        event.preventDefault();
+                                    }
+                                }
+                                else{
+                                    alert("Enter your Date Of Birth");
+                                    event.preventDefault();
+                                }
+                            }
+                            else{
+                                alert("Enter your Gender");
+                                event.preventDefault();
+                            }
+                        }
+                        else{
+                            alert("Enter valid Last Name");
+                            event.preventDefault();
+                        }
+                    }
+                    else{
+                        alert("Last Name should not be null");
+                        event.preventDefault();
+                    }
+                }
+                else{
+                    alert("Enter valid First Name");
+                    event.preventDefault();
+                }
+            }
+            else{
+                alert("First Name should not be null");
+                event.preventDefault();
+            }
+        }                                                                                  
+    </script>
+    <div class="container">
+        <div class="title">Register</div><br>
+        <form name="myform" method="post" class="myform" action="register.jsp">
+            <div class="user-details">
+                <div class="fl">
+                    <b>First Name:</b><input type="text" name="fname" id="fname" placeholder="Enter your First Name"><br><br>
+                    <b>Last Name:</b><input type="text" name="lname" id="lname" onkeypress="return (event.charCode!=32)" placeholder="Enter your Last Name"><br><br>
+                </div>
+                <div class="gd" style="display: flex; justify-content: space-evenly; align-items: center; width:300px;">
+                    <b>Gender:</b>
+                    <input type="radio" name="gender" id="male"><b>Male</b>
+                    <input type="radio" name="gender" id="female"><b>Female</b>
+                    <input type="radio" name="gender" id="other"><b>Other</b><br><br>
+                </div>
+                <div class="fl">
+                    <b>Date of birth:</b><input type="date" name="age" id="age" ><br><br>
+                    <b>Phone no:</b><input type="number" name="phone" id="phone" placeholder="Enter your Phone Number"><br><br>
+                    <b>College Name:</b><input type="text" name="college" id="college" placeholder="Enter your College Name"><br><br>
+                    <b>Email ID:</b><input type="text" name="username" id="username" placeholder="Enter Your Email ID"><br><br>
+                    <b>New Password:</b><input type="password" name="new_password" id="new_password" placeholder="Enter your New Password"><br><br>Password must contain atleast one special character.<br><br>
+                    <b>Confirm Password:</b><input type="password" name="confirm_password" id="confirm_password" placeholder="Re-Enter your Password"><br><br>
+                </div>
+                <div class="button">
+                    <button onclick="valid()">submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

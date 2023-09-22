@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>LOGIN</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+
+<body>   
+      <div class="container">
+        <div class="title">Login </div><br>
+        <form action="login.jsp" method="post">
+             <div class="user-details">
+                 <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="text" name="email" id="email" placeholder="Enter your Email" required>
+                </div><br>
+                 <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" name="pass" id="pass" placeholder="Enter your Password" required>    
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" name="submit" id="submit" value="Login" >
+            </div>
+            <div class="text">
+                <span class="text">Don't have an account ?</span>
+            </div>
+            <a href="registration.html">Create an account</a>
+        </form>
+    </div>
+</body>
+
+</html>
